@@ -24,14 +24,17 @@ function (Controller, MessageToast) {
 
         onChangeMOP: function (oEvent) {
             var sSelectedKey = oEvent.getParameter("selectedItem").getProperty("key");
+            var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();        
+            var sGCashKey = oTextBundle.getText("mopkeygcash"); // GCASH
+            var sCCKey = oTextBundle.getText("mopkeycc");       // CC
+
             var oMobileLabel = this.getView().byId("idLblPhone");
             var oMobileInput = this.getView().byId("idInputPhone");
             var oCCLabel = this.getView().byId("idLblCC");
             var oCCInput = this.getView().byId("idInputCC");
             
-            var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-            var sMsg = oTextBundle.getText("addButtonMsg");
-            if (sSelectedKey === "GCASH"){
+            var sSelectedPaym = oEvent.getParameter("selectedItem").getProperty("text");
+            if (sSelectedKey === sGCashKey){
                 // show the mobile field
                 oMobileLabel.setVisible(true);
                 oMobileInput.setVisible(true);
@@ -40,7 +43,7 @@ function (Controller, MessageToast) {
                 oMobileInput.setVisible(false);
             }
 
-            if (sSelectedKey === "CC"){
+            if (sSelectedKey === sCCKey){
                 // show the mobile field
                 oCCLabel.setVisible(true);
                 oCCInput.setVisible(true);
@@ -48,6 +51,8 @@ function (Controller, MessageToast) {
                 oCCLabel.setVisible(false);
                 oCCInput.setVisible(false);
             }
+            
+            sap.m.MessageToast.show(sSelectedPaym); 
         },
 
         onPressCheckout: function (){
@@ -59,7 +64,7 @@ function (Controller, MessageToast) {
             // Check if first name is blank
             if (oInputFNameValue === "" ){
                 sap.m.MessageToast.show(sMsg); 
-            } else if(oInputLNameValue === ""){
+            } else if(oInputFNameValue === "" && oInputLNameValue === ""){
                 sap.m.MessageToast.show(sMsg); 
             }
         },

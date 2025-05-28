@@ -4,7 +4,7 @@ xmlns="sap.m"
 xmlns:f="sap.ui.layout.form"
 xmlns:core="sap.ui.core"
 controllerName="com.training.exer1abad.controller.MainView">
-    <Page id="page" title="{i18n>title}">
+    <Page id="page" title="{i18n>title}" floatingFooter="true">
         <VBox id="idVBox" class="sapUiSmallMargin">
             <f:SimpleForm id="idSimpleForm" editable="true" layout="ResponsiveGridLayout" title="Details" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
                 <f:content>
@@ -73,3 +73,5 @@ controllerName="com.training.exer1abad.controller.MainView">
         </footer>
     </Page>
 </mvc:View>
+
+
